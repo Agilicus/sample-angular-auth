@@ -1,19 +1,6 @@
-## sample-angular-auth
-
-This shows how, from a blank Angular application (e.g. 'ng new sample-angular-auth')
-we arrived at one with OpenID Connect and RBAC control.
-
-1. `npm i --save angular-oauth2-oidc`
-2. Add simple html to `app.component.html`
-3. Add OAuthService to app.component.ts, app.module.ts
-4. Update/Edit auth.config (consider using an `environment`)
-5. Add interceptor, httpclientmodule to app.module.ts
-6. Add `npm i --save short-uuid`
-
-
 # SampleAngularAuth
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
 
 ## Development server
 
