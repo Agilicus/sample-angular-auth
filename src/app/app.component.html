@@ -1,5 +1,6 @@
 <div class="buttons-container">
   <button
+    *ngIf="user$ | async"
     type="button"
     mat-raised-button
     color="warn"
@@ -12,6 +13,7 @@
   </button>
 
   <button
+    *ngIf="!(user$ | async)"
     type="button"
     mat-raised-button
     color="primary"
