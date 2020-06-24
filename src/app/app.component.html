@@ -68,15 +68,32 @@
       <input
         matInput
         [readonly]="true"
-        placeholder="ID"
+        placeholder="User ID"
         value="{{ user.id }}"
       />
     </mat-form-field>
   </form>
 
-  <h2>Roles</h2>
+  <h2>User Roles</h2>
 
   <p>
     {{ getUserRoles(user.roles) }}
   </p>
+
+  <h2>Raw User Record</h2>
+  <p>
+    {{ getUser(user) }}
+  </p>
+  <h2>Raw Access Token</h2>
+  <p>This should be placed on all requests to your backend service.</p>
+  <p>
+    {{ getAccessToken() }}
+  </p>
+
+  <h2>Raw ID Token</h2>
+  <p>Generally this is never used.</p>
+  <p>
+    {{ getIdToken() }}
+  </p>
+
 </div>
