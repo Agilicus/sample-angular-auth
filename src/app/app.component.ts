@@ -14,11 +14,7 @@ export class AppComponent implements OnInit {
   // These two settings (client-id and issuer) will need to be adjusted.
   // In general, each application should have its own client-id
   constructor(tokens: TokensService) {
-    this.auth = new Auth(
-      'app-1',
-      'https://auth.cloud.egov.city',
-      tokens
-    );
+    this.auth = new Auth('app-1', 'https://auth.cloud.egov.city', tokens);
   }
 
   public ngOnInit(): void {
@@ -36,6 +32,7 @@ export class AppComponent implements OnInit {
   public getUserRoles(roles: { [key: string]: Array<string> }): string {
     return JSON.stringify(roles);
   }
+
   public getUser(user: { [key: string]: Array<string> }): string {
     return JSON.stringify(user);
   }
@@ -43,6 +40,7 @@ export class AppComponent implements OnInit {
   public getAccessToken(): string {
     return this.auth.access_token();
   }
+
   public getIdToken(): string {
     return this.auth.id_token();
   }
