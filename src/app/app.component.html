@@ -13,7 +13,7 @@
   </button>
 
   <button
-    *ngIf="!(user$ | async)"
+    *ngIf="(user$ | async) == (false || null || undefined)"
     type="button"
     mat-raised-button
     color="primary"
