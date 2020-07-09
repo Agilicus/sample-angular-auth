@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(tokens: TokensService) {
     let clientId = 'app-1';
     if (window.location.hostname !== 'localhost') {
-        clientId = window.location.hostname;
+        clientId = window.location.hostname.split('.')[0];
     }
     this.auth = new Auth(clientId, 'https://auth.cloud.egov.city', tokens);
   }
