@@ -13,8 +13,14 @@ export class AppComponent implements OnInit {
 
   // These two settings (client-id and issuer) will need to be adjusted.
   // In general, each application should have its own client-id
+  // For demo purposes, we have assumed hostname is an existing
+  // client-id
   constructor(tokens: TokensService) {
-    this.auth = new Auth('app-1', 'https://auth.cloud.egov.city', tokens);
+    let clientId = 'app-1';
+    if (window.location.hostname !== 'localhost') {
+        clientId = window.location.hostname;
+    }
+    this.auth = new Auth(clientId, 'https://auth.cloud.egov.city', tokens);
   }
 
   public ngOnInit(): void {
