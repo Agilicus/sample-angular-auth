@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.2...v0.0.3) (2020-07-09)
+
+
+### Bug Fixes
+
+* split client-id by first part of name ([a8e6693](https://git.agilicus.com/open-source/sample-angular-auth/commit/a8e669369ef3b35f62826a52882f563859276f0c))
+
 ### [0.0.2](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.1...v0.0.2) (2020-07-09)
 
 
