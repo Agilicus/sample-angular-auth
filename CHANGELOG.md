@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.4...v0.0.5) (2020-07-16)
+
+
+### Features
+
+* bump to angular 10 ([dc468b3](https://git.agilicus.com/open-source/sample-angular-auth/commit/dc468b33a0dfd2d80496a192156258c42a781218))
+* bump to angular/material 10 ([d137dff](https://git.agilicus.com/open-source/sample-angular-auth/commit/d137dffa7e339ec993f9fcfd329c30a8b285fe72))
+
+
+### Bug Fixes
+
+* bump remainder packages ([b87dc78](https://git.agilicus.com/open-source/sample-angular-auth/commit/b87dc78d4de724e0d99bf7585747bcb8a0f762bf))
+
 ### [0.0.4](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.3...v0.0.4) (2020-07-16)
 
 ### [0.0.3](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.2...v0.0.3) (2020-07-09)
