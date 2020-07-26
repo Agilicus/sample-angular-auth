@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.6...v0.0.7) (2020-07-26)
+
+
+### Features
+
+* add json decode pretty-print html ([bdc501b](https://git.agilicus.com/open-source/sample-angular-auth/commit/bdc501b90046260df47051e67a99252f55259583))
+
+
+### Bug Fixes
+
+* correct whitespace ([128831e](https://git.agilicus.com/open-source/sample-angular-auth/commit/128831e1cef3f4b07ae8e099b8ff091a35dae241))
+
 ### [0.0.6](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.5...v0.0.6) (2020-07-24)
 
 
