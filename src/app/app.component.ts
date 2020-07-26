@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     return JSON.stringify(user);
   }
 
-  private decodeToken(token: string) : object {
+  private decodeToken(token: string): object {
     let decoded = {};
     if (token) {
         decoded = jwt_decode(token);
