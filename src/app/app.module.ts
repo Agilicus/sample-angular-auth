@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatExpansionModule  } from '@angular/material/expansion';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,8 @@ import { ApiModule, apiConfigFactory } from 'agilicus-angular';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    MatExpansionModule,
+    NgxJsonViewerModule,
     ApiModule.forRoot(apiConfigFactory)
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, TokensService, User } from 'agilicus-angular';
 import { Observable } from 'rxjs';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -43,11 +44,18 @@ export class AppComponent implements OnInit {
     return JSON.stringify(user);
   }
 
-  public getAccessToken(): string {
-    return this.auth.access_token();
+  private decodeToken(token: string) : object {
+    let decoded = {};
+    if (token) {
+        decoded = jwt_decode(token);
+    }
+    return decoded;
+  }
+  public getAccessToken(): object {
+    return this.decodeToken(this.auth.access_token());
   }
 
-  public getIdToken(): string {
-    return this.auth.id_token();
+  public getIdToken(): object {
+    return this.decodeToken(this.auth.id_token());
   }
 }
