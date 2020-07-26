@@ -9,12 +9,16 @@
     Login
   </button>
   <div *ngIf="(user$ | async) == (false || null || undefined)">
+    <hr>
     <p>
-      Please read more about <a href="https://www.agilicus.com/about-multi-factor-authentication/?utm_campaign=mfa-demo&utm_medium=demo&utm_source=mfa-demo">multi-factor
+      Please read more about <a
+        href="https://www.agilicus.com/about-multi-factor-authentication/?utm_campaign=mfa-demo&utm_medium=demo&utm_source=mfa-demo">multi-factor
         authentication</a>.
     </p>
     <p>
-      If you would like to try this demo and provide some feedback, please <a href="https://www.agilicus.com/multi-factor-authentication-preview?utm_campaign=mfa-demo&utm_medium=demo">see the
+      If you would like to try this demo and provide some feedback, please <a
+        href="https://www.agilicus.com/multi-factor-authentication-preview?utm_campaign=mfa-demo&utm_medium=demo">see
+        the
         instructions</a>
     </p>
   </div>
@@ -22,10 +26,11 @@
 </div>
 
 <div class="app-container" *ngIf="user$ | async as user">
-<h2>Survey</h2>
-<p>
-  <b>Thank</b> you for trying this demonstration. We would appreciate any feedback, either emailed to mfa@agilicus.com, or,
-  please fill in this <a href="https://forms.gle/dkoriUNA39FwirVG7">short survey.</a>
+  <h2>Survey</h2>
+  <p>
+    <b>Thank you</b> for trying this demonstration. We would appreciate any feedback, either emailed to
+    mfa@agilicus.com, or,
+    please <b>fill</b> in this <a href="https://forms.gle/dkoriUNA39FwirVG7">short survey.</a>
   </p>
 
   <h2>Decoded Information</h2>
@@ -52,26 +57,41 @@
     </mat-form-field>
   </form>
 
-  <h2>User Roles</h2>
+  <h2>Raw detail information</h2>
 
-  <p>
-    {{ getUserRoles(user.roles) }}
-  </p>
+  <mat-accordion>
 
-  <h2>Raw User Record</h2>
-  <p>
-    {{ getUser(user) }}
-  </p>
-  <h2>Raw Access Token</h2>
-  <p>This should be placed on all requests to your backend service.</p>
-  <p>
-    {{ getAccessToken() }}
-  </p>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> User Roles</mat-panel-title>
 
-  <h2>Raw ID Token</h2>
-  <p>Generally this is never used.</p>
-  <p>
-    {{ getIdToken() }}
-  </p>
+
+      </mat-expansion-panel-header>
+      <ngx-json-viewer [json]="user.roles"></ngx-json-viewer>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+
+        <mat-panel-title>Raw User Record</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ngx-json-viewer [json]="user"></ngx-json-viewer>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        Raw Access Token
+      </mat-expansion-panel-header>
+      <p>This should be placed on all requests to your backend service.</p>
+      <ngx-json-viewer [json]="getAccessToken()"></ngx-json-viewer>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>Raw ID Token</mat-expansion-panel-header>
+      <p>Generally this is never used.</p>
+      <ngx-json-viewer [json]="getIdToken()"></ngx-json-viewer>
+    </mat-expansion-panel>
+  </mat-accordion>
 
 </div>

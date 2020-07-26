@@ -23,6 +23,8 @@
     "@angular/router": "~10.0.4",
     "agilicus-angular": "^1.51.2",
     "fast-json-patch": "^3.0.0-1",
+    "jwt-decode": "^2.2.0",
+    "ngx-json-viewer": "^2.4.0",
     "oidc-client": "^1.10.1",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
