@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(tokens: TokensService) {
     let clientId = 'app-1';
     if (window.location.hostname !== 'localhost') {
-        clientId = window.location.hostname.split('.')[0];
+      clientId = window.location.hostname.split('.')[0];
     }
     this.auth = new Auth(clientId, 'https://auth.cloud.egov.city', tokens);
   }
@@ -28,6 +28,27 @@ export class AppComponent implements OnInit {
     this.user$ = this.auth.user$();
   }
 
+  private isMfaDemo(): boolean {
+    return window.location.href.search('mfa-demo') !== -1 || window.location.href.search('localhost') !== -1;
+  }
+  get bannerWidth(): number {
+    if (this.isMfaDemo()) {
+      if (window.innerWidth < 450) {
+        return 300;
+      }
+      return 512;
+    }
+    return 300;
+  }
+  get bannerImage(): string | null {
+    if (this.isMfaDemo()) {
+      if (window.innerWidth < 450) {
+        return 'assets/img/mfa-narrow.jpg';
+      }
+      return 'assets/img/mfa.jpg';
+    }
+    return 'assets/img/Agilicus-Horizontal.svg';
+  }
   public async onLoginClick(): Promise<void> {
     await this.auth.login();
   }
@@ -47,7 +68,7 @@ export class AppComponent implements OnInit {
   private decodeToken(token: string): object {
     let decoded = {};
     if (token) {
-        decoded = jwt_decode(token);
+      decoded = jwt_decode(token);
     }
     return decoded;
   }

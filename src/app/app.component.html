@@ -1,4 +1,7 @@
+
 <div class="buttons-container">
+  <img src="{{bannerImage}}" width="{{bannerWidth}}"><br>
+
   <button *ngIf="user$ | async" type="button" mat-raised-button color="warn" class="logout-button"
     (click)="onLogoutClick()" matTooltip="Click to logout" attr.aria-label="A button for logging out">
     Logout
@@ -12,15 +15,21 @@
     <hr>
     <p>
       Please read more about <a
-        href="https://www.agilicus.com/about-multi-factor-authentication/?utm_campaign=mfa-demo&utm_medium=demo&utm_source=mfa-demo">multi-factor
+        href="https://www.agilicus.com/about-multi-factor-authentication/?utm_campaign=mfa-demo&utm_medium=demo&utm_source=mfa-demo"
+        target="_blank">multi-factor
         authentication</a>.
     </p>
     <p>
       If you would like to try this demo and provide some feedback, please <a
-        href="https://www.agilicus.com/multi-factor-authentication-preview?utm_campaign=mfa-demo&utm_medium=demo">see
+        href="https://www.agilicus.com/multi-factor-authentication-preview?utm_campaign=mfa-demo&utm_medium=demo"
+        target="_blank">see
         the
         instructions</a>
     </p>
+    <hr>
+    <p>If you would like to modify your Multi-Factor Authentication Profile, see <a
+        href="https://profile.cloud.egov.city/" target="_blank">your profile</a>. <em>Note</em>, we have purposely disabled multi-factor for
+      the profile editor for the sake of this demo so you can enable/disable. Normally it would be forced on.</p>
   </div>
 
 </div>
