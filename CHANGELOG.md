@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.7...v0.0.8) (2020-07-28)
+
+
+### Features
+
+* add banner to show which app ([3051bdf](https://git.agilicus.com/open-source/sample-angular-auth/commit/3051bdfabdfb859fff5289e12bb736899b874712))
+
 ### [0.0.7](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.6...v0.0.7) (2020-07-26)
 
 
