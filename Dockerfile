@@ -1,4 +1,4 @@
-FROM node:12 as frontend
+FROM node:14 as frontend
 MAINTAINER dev@agilicus.com
 
 COPY *.json /web/
