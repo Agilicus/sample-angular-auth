@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.29](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.28...v0.0.29) (2020-09-05)
+
+
+### Bug Fixes
+
+* add smoke test ([c653b93](https://git.agilicus.com/open-source/sample-angular-auth/commit/c653b9358112196ba2e9ac3f1d45082ab4f39859))
+
 ### [0.0.28](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.27...v0.0.28) (2020-09-04)
 
 ### [0.0.27](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.26...v0.0.27) (2020-09-03)
