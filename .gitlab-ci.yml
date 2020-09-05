@@ -5,11 +5,8 @@ stages:
   - autorel
   - build
   - release
+  - smoke
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
 
 conform:
   stage: lint
@@ -23,34 +20,7 @@ lint:
   script: |
     env CYPRESS_INSTALL_BINARY=0 npm i
     ./node_modules/.bin/ng lint
-
-audit:
-  stage: test
-  image: node:12
-  cache:
-    policy: pull
-  script: |
-    env CYPRESS_INSTALL_BINARY=0 npm install --unsafe-perm
-    ./node_modules/.bin/ng lint
     npm audit
-
-# unitTest:
-#   stage: test
-#   image: cr.agilicus.com/corp-tools/angular-build
-#   cache:
-#     policy: pull
-#   script: |
-#     #set +e
-#     #Xvfb &
-#     #xpid=$!
-#     #DISPLAY=:0
-#     #export DISPLAY
-#     npm i
-#     chown -R node:node .
-#     su node -c "npm run test"
-#     #res=$?
-#     #kill $xpid
-#     #exit $res
 
 #
 # Run `conventional-changelog -p angular -i CHANGELOG.md -s -r 0`
@@ -67,7 +37,6 @@ audit:
 #
 autorel:
   stage: autorel
-  cache: {}
   image: cr.agilicus.com/corp-tools/build-containers/release
   script: |
     set -x
@@ -85,15 +54,14 @@ autorel:
     variables:
       - $CI_COMMIT_MESSAGE =~ /^chore\(release\)/
 
+
 # This is run both in the 'autorel' case and when not
 # In the 'autorel' case CI_COMMIT_TAG is set, and we should
 # keep the release somewhere
 build:
   stage: build
-  cache: {}
-  image: cr.agilicus.com/corp-tools/docker-compose
-  services:
-    - name: docker:dind
+  needs: []
+  image: cr.agilicus.com/corp-tools/build-containers/img-build
   script: |
     std-build-tag-push
 
@@ -113,3 +81,35 @@ release:
     - branches
   only:
     - tags
+
+# Very simple smoke test, check packages are running etc
+smoke:
+  stage: smoke
+  image: ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_COMMIT_REF_SLUG}
+  needs: [build]
+  cache: {}
+  script: |
+    /usr/local/openresty/bin/openresty -t -c /usr/local/openresty/nginx/conf/nginx.conf
+    /usr/local/openresty/bin/openresty -g "daemon off;" > /tmp/log 2>&1 &
+    nretry=0
+    set +e
+    until [ $nretry -eq 10 ] || curl -s http://localhost:5000 >/dev/null 2>&1
+    do
+        echo "Wait for local daemon to come up... $nretry"
+        sleep 1
+        nretry=$((nretry + 1))
+    done
+    echo "Took $nretry loops"
+    [ $nretry -eq 10 ] && exit 1
+    set -e
+    set +x
+    echo "Check for success"
+    grep -q '"response_code": 200' /tmp/log
+    curl -s localhost:5000/ | grep -q "<title>Sample Angular Authentication</title>"
+    kill $(cat /tmp/pid)
+    echo "Smoke test completed"
+  except:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /^chore\(release\)/
