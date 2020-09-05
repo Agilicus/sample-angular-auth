@@ -8,19 +8,13 @@ WORKDIR /web
 RUN npm ci && \
     ./node_modules/.bin/ng build --aot --subresourceIntegrity --outputHashing=all --prod=true
 
-FROM cr.agilicus.com/open-source/openresty
+FROM cr.agilicus.com/open-source/openresty:v0.5.16
 MAINTAINER dev@agilicus.com
 
-COPY --from=frontend /web/dist/sample-angular-auth /web/
+COPY --from=frontend /web/dist/sample-angular-auth /app/
 
-RUN  adduser --disabled-password --gecos '' web \
-  && touch /usr/local/openresty/nginx/logs/error.log /usr/local/openresty/nginx/logs/access.log \
-  && mkdir -p /var/tmp/nginx \
-  && chown web:web /usr/local/openresty/nginx/logs/*.log  /var/tmp/nginx
+ENV HDR_CONTENT_SECURITY_POLICY="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://www.gravatar.com https://storage.googleapis.com www.googletagmanager.com https://www.google-analytics.com data:; font-src 'self' https://fonts.gstatic.com; connect-src *; script-src 'self' 'nonce-%s' https://www.google-analytics.com https://ssl.google-analytics.com https://www.googletagmanager.com; frame-src 'self'; report-uri /.well-known/csp-violation-report-endpoint/;"
 
-COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+WORKDIR /app
+USER openresty
 
-WORKDIR /web
-USER web
-
-ENTRYPOINT [ "/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;" ]
