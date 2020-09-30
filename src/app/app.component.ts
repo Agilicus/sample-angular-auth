@@ -18,10 +18,16 @@ export class AppComponent implements OnInit {
   // client-id
   constructor(tokens: TokensService) {
     let clientId = 'app-1';
+    let idp = 'https://auth.cloud.egov.city';
     if (window.location.hostname !== 'localhost') {
       clientId = window.location.hostname.split('.')[0];
+      const domainSplit = window.location.hostname.split('.');
+      const a1 = domainSplit.pop();
+      const a2 = domainSplit.pop();
+      const a3 = domainSplit.pop();
+      idp = 'https://auth.' + a3 + '.' + a2 + '.' + a1;
     }
-    this.auth = new Auth(clientId, 'https://auth.cloud.egov.city', tokens);
+    this.auth = new Auth(clientId, idp, tokens);
   }
 
   public ngOnInit(): void {
