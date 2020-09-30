@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.46](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.45...v0.0.46) (2020-09-30)
+
+
+### Bug Fixes
+
+* select idp automatically ([3749cd2](https://git.agilicus.com/open-source/sample-angular-auth/commit/3749cd2ad0206e2003ae0667c79322f461f86af3))
+
 ### [0.0.45](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.44...v0.0.45) (2020-09-27)
 
 ### [0.0.44](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.43...v0.0.44) (2020-09-26)
