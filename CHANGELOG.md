@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.55](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.54...v0.0.55) (2020-10-09)
+
 ### [0.0.54](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.53...v0.0.54) (2020-10-09)
 
 ### [0.0.53](https://git.agilicus.com/open-source/sample-angular-auth/compare/v0.0.52...v0.0.53) (2020-10-08)
