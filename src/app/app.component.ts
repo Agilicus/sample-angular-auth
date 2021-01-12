@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, TokensService, User } from 'agilicus-angular';
 import { Observable } from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   // For demo purposes, we have assumed hostname is an existing
   // client-id
   constructor(tokens: TokensService) {
-    let clientId = 'app-1';
+    let clientId = 'multi-factor-authentication';
     let idp = 'https://auth.cloud.egov.city';
     if (window.location.hostname !== 'localhost') {
       clientId = window.location.hostname.split('.')[0];
