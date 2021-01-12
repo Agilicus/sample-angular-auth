@@ -34,11 +34,11 @@ export class AppComponent implements OnInit {
     this.user$ = this.auth.user$();
   }
 
-  private isMfaDemo(): boolean {
-    return window.location.href.search('mfa-demo') !== -1 || window.location.href.search('localhost') !== -1;
+  private isMultiFactorAuthenticationDemo(): boolean {
+    return window.location.href.search('multi-factor-authentication') !== -1 || window.location.href.search('localhost') !== -1;
   }
   get bannerWidth(): number {
-    if (this.isMfaDemo()) {
+    if (this.isMultiFactorAuthenticationDemo()) {
       if (window.innerWidth < 450) {
         return 300;
       }
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     return 300;
   }
   get bannerImage(): string | null {
-    if (this.isMfaDemo()) {
+    if (this.isMultiFactorAuthenticationDemo()) {
       if (window.innerWidth < 450) {
         return 'assets/img/mfa-narrow.jpg';
       }
