@@ -8,7 +8,7 @@ WORKDIR /web
 RUN npm ci && \
     ./node_modules/.bin/ng build --aot --subresourceIntegrity --outputHashing=all --prod=true
 
-FROM cr.agilicus.com/open-source/openresty:v0.7.2
+FROM cr.agilicus.com/open-source/openresty:v0.7.5
 MAINTAINER dev@agilicus.com
 
 COPY --from=frontend /web/dist/sample-angular-auth /app/
