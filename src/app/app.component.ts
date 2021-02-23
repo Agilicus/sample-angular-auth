@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, TokensService, User } from 'agilicus-angular';
-import { Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 
 @Component({
@@ -16,8 +17,8 @@ export class AppComponent implements OnInit {
   // In general, each application should have its own client-id
   // For demo purposes, we have assumed hostname is an existing
   // client-id
-  constructor(tokens: TokensService) {
-    let clientId = 'multi-factor-authentication';
+  constructor(private tokens: TokensService) {
+    let clientId = 'sample-angular-auth';
     let idp = 'https://auth.cloud.egov.city';
     if (window.location.hostname !== 'localhost') {
       clientId = window.location.hostname.split('.')[0];
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
       const a3 = domainSplit.pop();
       idp = 'https://auth.' + a3 + '.' + a2 + '.' + a1;
     }
-    this.auth = new Auth(clientId, idp, tokens);
+    this.auth = new Auth(clientId, idp, tokens, 'urn:agilicus:api:files:*?'); //, 'urn:api:agilicus:files:owner');
   }
 
   public ngOnInit(): void {
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit {
     await this.auth.logout();
   }
 
+  // 
   public getUserRoles(roles: { [key: string]: Array<string> }): string {
     return JSON.stringify(roles);
   }
